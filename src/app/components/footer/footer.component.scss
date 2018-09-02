@@ -1,0 +1,22 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #1c303f;
+  width: 100%;
+  padding: 20px 0;
+
+  .logo {
+    width: 100px;
+  }
+
+  .text {
+    color: #fff;
+    text-align: center;
+
+    p {
+      font-size: 14px;
+    }
+  }
+}

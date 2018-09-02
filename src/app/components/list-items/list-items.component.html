@@ -1,0 +1,29 @@
+<app-header></app-header>
+
+<section class="content">
+  <form class="example-form" *ngIf="options.length > 0">
+    <mat-form-field class="example-full-width">
+      <input type="text" [(ngModel)]="filter.name" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+  <div class="items">
+    <div class="item" *ngFor="let item of peoples| filterBy: filter">
+      <a routerLink="{{item.url}}">{{item.name}}</a>
+    </div>
+  </div>
+
+  <div class="arrows">
+    <div (click)="changePage(isPrev)" class="left-arrow" [ngStyle]="{'background-color': isPrev !== null ? '#22e810' : '#555'}"></div>
+    <div (click)="changePage(isNext)" class="right-arrow"[ngStyle]="{'background-color': isNext !== null ? '#22e810' : '#555'}"></div>
+  </div>
+
+</section>
+
+
+
+<app-footer></app-footer>

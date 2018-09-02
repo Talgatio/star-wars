@@ -1,0 +1,63 @@
+<app-header></app-header>
+
+<section class="content">
+  <div class="header">
+    <a [routerLink]="['/main']"><img src="./assets/img/arrow-back.png" alt=""></a>
+    <h1 *ngIf="profile.name">{{profile.name}} page</h1>
+  </div>
+
+  <div class="block">
+    <p><b>Name</b>:</p>
+    <p>{{profile.name}}</p>
+  </div>
+  <div class="block">
+    <p><b>Height</b>:</p>
+    <p>{{profile.height}}</p>
+  </div>
+  <div class="block">
+    <p><b>Mass</b>:</p>
+    <p>{{profile.mass}}</p>
+  </div>
+  <div class="block">
+    <p><b>Hair color</b>:</p>
+    <p>{{profile.hair_color}}</p>
+  </div>
+  <div class="block">
+    <p><b>Eye Color:</b></p>
+    <p>{{profile.eye_color}}</p>
+  </div>
+  <div class="block">
+    <p><b>Skin Color</b>:</p>
+    <p>{{profile.skin_color}}</p>
+  </div>
+  <div class="block">
+    <p><b>Birth Year</b>:</p>
+    <p>{{profile.birth_year}}</p>
+  </div>
+  <div class="block">
+    <p><b>Gender</b>:</p>
+    <p>{{profile.gender}}</p>
+  </div>
+  <div class="block" *ngIf="profile.homeworld && profile.homeworld.name !== undefined">
+    <p><b>Homeworld</b>:</p>
+    <p>{{profile.homeworld.name}}</p>
+  </div>
+  <div class="block items-top" *ngIf="vehicles.length > 0">
+    <p><b>Vehicles</b>:</p>
+    <ul>
+      <li *ngFor="let veh of vehicles">
+        <p>name: {{veh.name}}</p>
+        <p>model: {{veh.model}}</p>
+      </li>
+    </ul>
+  </div>
+  <div class="block items-top">
+    <p><b>Films</b>:</p>
+    <ul>
+      <li *ngFor="let film of films">{{film.title}}</li>
+    </ul>
+  </div>
+
+</section>
+
+<app-footer></app-footer>

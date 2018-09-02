@@ -1,0 +1,35 @@
+.body {
+  background-color: #67a0fc;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+
+  .login-block {
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 500px;
+    padding: 15px;
+    background-color: #fff;
+
+    h1 {
+      text-align: center;
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+
+      .btn {
+        cursor: pointer;
+        p {
+          font-size: 14px;
+        }
+        img {
+          width: 50px;
+        }
+      }
+
+    }
+  }
+}

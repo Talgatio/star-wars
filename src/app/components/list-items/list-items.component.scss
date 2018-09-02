@@ -1,0 +1,75 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .items {
+    .item {
+      width: 500px;
+      border: 1px solid #555;
+      text-align: center;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin: 10px 0;
+    }
+  }
+
+  .arrows {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    .left-arrow, .right-arrow {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #555;
+      margin: 10px;
+      position: relative;
+      cursor: pointer;
+      transition: all .2s;
+      opacity: 1;
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 4px;
+        height: 4px;
+
+      }
+
+      &:hover {
+        opacity: .7;
+      }
+    }
+
+    .left-arrow::after {
+      top: 7px;
+      left: 8px;
+      transform: rotate(-45deg);
+      border-left: 1px solid #fff;
+      border-top: 1px solid #fff;
+    }
+
+    .right-arrow::after {
+      top: 7px;
+      left: 7px;
+      transform: rotate(45deg);
+      border-right: 1px solid #fff;
+      border-top: 1px solid #fff;
+    }
+  }
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
