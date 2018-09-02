@@ -16,8 +16,9 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   signUpwithLinkedIn() {
     IN.User.authorize(() => {
-      IN.API.Raw('/people/~:(id,num-connections,picture-url)').result((resp) => {
-        console.log(resp);
+      IN.API.Raw('/people/~:(id,first_name,picture-url)').result((resp) => {
+        this.userService.setProfile(resp);
+        this.goToMainpage();
       }).error((e) => {
 
       });
@@ -30,20 +31,23 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   }
 
+  goToMainpage() {
+    const routerService = this.injector.get(Router);
+    const ngZone: any = this.injector.get(NgZone);
+    ngZone.run(() => {
+      routerService.navigate(['/main'], { skipLocationChange: true });
+    });
+  }
+
   ngAfterViewInit() {
     setTimeout(() => {
       FB.Event.subscribe('auth.statusChange', (response) => {
         console.log(response);
         if (response.status === 'connected') {
-          this.userService.setUser(response.authResponse);
           FB.api('/me?fields=id, name, first_name,last_name, picture', (resp) => {
             console.log(resp);
             this.userService.setProfile(resp);
-            const routerService = this.injector.get(Router);
-            const ngZone: any = this.injector.get(NgZone);
-            ngZone.run(() => {
-              routerService.navigate(['/main'], { skipLocationChange: true });
-            })
+            this.goToMainpage();
           });
         }
       });

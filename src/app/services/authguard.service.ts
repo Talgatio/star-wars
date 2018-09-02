@@ -6,7 +6,7 @@ import {UserService} from './user.service';
 export class AuthguardService implements CanActivate {
   constructor(private router: Router, private userService: UserService) {}
 
-  notEmpty(obj) {
+  static notEmpty(obj) {
     for (let key in obj) {
       if (obj.hasOwnProperty(key)) {
         return true;
@@ -16,8 +16,8 @@ export class AuthguardService implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const user = this.userService.getUser()
-    if (this.notEmpty(user)) {
+    const user = this.userService.getProfile();
+    if (AuthguardService.notEmpty(user)) {
       return true;
     } else {
       this.router.navigate(['login']);

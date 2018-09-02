@@ -11,14 +11,15 @@ export class HeaderComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   showDropdown: boolean;
-  user = this.userService.getProfile();
-
+  user: any;
   toggleDropdown(e) {
     e.stopPropagation();
     this.showDropdown = !this.showDropdown;
   }
 
   ngOnInit() {
+    this.user = this.userService.getProfile();
+    console.log(this.user);
     window.addEventListener('click', () => {
       this.showDropdown = false;
     }, false);

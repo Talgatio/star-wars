@@ -28,7 +28,7 @@
       cursor: pointer;
       user-select: none;
 
-      &::after {
+      /*&::after {
         content: '';
         width: 0;
         height: 0;
@@ -74,7 +74,7 @@
             opacity: .7;
           }
         }
-      }
+      }*/
     }
   }
 }

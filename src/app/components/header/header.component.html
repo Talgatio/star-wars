@@ -4,13 +4,15 @@
   </div>
   <div class="profile">
     <div class="avatar">
-      <img src="{{user.picture.data.url}}" alt="">
+      <img *ngIf="user.picture" src="{{user.picture.data.url}}" alt="">
+      <img *ngIf="user.pictureUrl" src="{{user.pictureUrl}}" alt="">
     </div>
-    <div class="name" (click)="toggleDropdown($event)">
-      Hi, {{user.first_name}}
-      <ul [style.display]="showDropdown ? 'block' : 'none'">
+    <div class="name">
+      <span *ngIf="user.first_name">Hi, {{user.first_name}}</span>
+      <span *ngIf="user.firstName">Hi, {{user.firstName}}</span>
+      <!--<ul [style.display]="showDropdown ? 'block' : 'none'">
         <li>logout</li>
-      </ul>
+      </ul>-->
     </div>
   </div>
 </section>
